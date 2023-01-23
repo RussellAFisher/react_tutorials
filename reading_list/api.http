@@ -1,0 +1,35 @@
+# Get all books
+// @no-log
+GET http://localhost:3001/books HTTP/1.1
+Content-Type: application/json
+
+###
+
+# Create a book
+// @no-log
+POST http://localhost:3001/books HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "The Hobbit"
+}
+
+###
+
+# Update a book
+// @no-log
+PUT http://localhost:3001/books/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "The Fellowship of the Ring"
+}
+
+###
+
+# Delete a book
+// @no-log
+DELETE http://localhost:3001/books/1 HTTP/1.1
+Content-Type: application/json
+
+
