@@ -18,19 +18,19 @@ function Table({data, config, keyFn}) {
             return <td className="p-2" key={column.label}>{column.render(rowData)}</td>
         });
 
-       return (
-           <tr className="border-b" key={keyFn(rowData)}>
-               {renderedCells}
-           </tr>
-       );
+        return (
+            <tr className="border-b" key={keyFn(rowData)}>
+                {renderedCells}
+            </tr>
+        );
     });
 
     return (
         <table className="table-auto border-spacing-2">
             <thead>
-                <tr className="border-b-2">
-                    {renderedColumns}
-                </tr>
+            <tr className="border-b-2">
+                {renderedColumns}
+            </tr>
             </thead>
             <tbody>{renderedRows}</tbody>
         </table>
