@@ -8,14 +8,23 @@ const albumsApi = createApi({
     }),
     endpoints(builder) {
         return {
-            deleteAlbum: builder.mutation({
-                invalidatesTags: (result, error, album) => {
-                    return [{type: "Album", id: album.id}]
+            getAlbums: builder.query({
+                providesTags: (result, error, user) => {
+                    const tags = result.map((album) => {
+                        return {type: "Album", id: album.id}
+                    });
+
+                    tags.push({type: "UsersAlbums", id: user.id});
+
+                    return tags;
                 },
-                query: (album) => {
+                query: (user) => {
                     return {
-                        url: `/albums/${album.id}`,
-                        method: "DELETE"
+                        url: "/albums",
+                        params: {
+                            userId: user.id
+                        },
+                        method: "GET"
                     }
                 }
             }),
@@ -34,23 +43,14 @@ const albumsApi = createApi({
                     }
                 }
             }),
-            getAlbums: builder.query({
-                providesTags: (result, error, user) => {
-                    const tags = result.map((album) => {
-                        return {type: "Album", id: album.id}
-                    });
-
-                    tags.push({type: "UsersAlbums", id: user.id});
-
-                    return tags;
+            deleteAlbum: builder.mutation({
+                invalidatesTags: (result, error, album) => {
+                    return [{type: "Album", id: album.id}]
                 },
-                query: (user) => {
+                query: (album) => {
                     return {
-                        url: "/albums",
-                        params: {
-                            userId: user.id
-                        },
-                        method: "GET"
+                        url: `/albums/${album.id}`,
+                        method: "DELETE"
                     }
                 }
             })
