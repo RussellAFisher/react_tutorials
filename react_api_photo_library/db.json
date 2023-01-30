@@ -3,8 +3,33 @@
     {
       "id": 1,
       "name": "Dusty"
+    },
+    {
+      "name": "Pauline Russel",
+      "id": 2
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "id": 1,
+      "title": "Booty popin",
+      "userId": 1
+    },
+    {
+      "userId": 1,
+      "title": "Bespoke Granite Bike",
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "title": "Handmade Wooden Soap",
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "title": "Ergonomic Wooden Shoes",
+      "id": 4
+    }
+  ],
   "photos": []
 }
